@@ -26,12 +26,13 @@ function TabuleiroJogo() {
   // For this 2d array, row 0 will represent the top row and
   // column 0 will represent the left-most column.
   // This nested-loop technique is a simple and common way to create a 2d array.
-  for (let i = 0; i < filas; i++) {
+/*   for (let i = 0; i < filas; i++) {
     tabuleiro[i] = [];
     for (let j = 0; j < colunas; j++) {
       tabuleiro[i].push(Casa());
     }
-  } 
+  }  */
+
   const obterTabuleiro = () => tabuleiro;
   
   const marcarJogada = (fila, coluna, jogador) => {
@@ -64,6 +65,8 @@ const jogadores = [{
 }
 
 const obterSímbolo = Jogador("Rui", "Joaquim");
+const tabuleiroJogo = TabuleiroJogo();
+console.log(tabuleiroJogo);
 console.log(obterSímbolo.jogadorActivo);
 
 
