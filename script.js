@@ -11,7 +11,6 @@ function TabuleiroJogo() {
 
   const obterTabuleiro = () => tabuleiro;
 
-
   const marcarJogada = (fila, coluna, jogada) => {
     if (tabuleiro[fila][coluna] === "X" || tabuleiro[fila][coluna] === "O") {
       console.log("Jogada inválida");
