@@ -1,13 +1,57 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilos.css">
     <title>Document</title>
 </head>
+
 <body>
-    
-    <script src="script.js"></script>
+    <div class="contentor">
+        <div class="titulo">
+            <h1>O Jogo do Galo</h1>
+        </div>
+        <div class="tabuleiro">
+            <div class="casa" data-linha="3" data-coluna="1">
+                <p class="simbolo">3,1</p>
+            </div>
+            <div class="casa" data-linha="3" data-coluna="2">
+                <p class="simbolo">3,2</p>
+            </div>
+            <div class="casa" data-linha="3" data-coluna="1">
+                <p class="simbolo">3,3</p>
+            </div>
+            <div class="casa" data-linha="2" data-coluna="1">
+                <p class="simbolo">2,1</p>
+            </div>
+            <div class="casa" data-linha="2" data-coluna="2">
+                <p class="simbolo">2,2</p>
+            </div>
+            <div class="casa" data-linha="2" data-coluna="3">
+                <p class="simbolo">2,3</p>
+            </div>
+            <div class="casa" data-linha="1" data-coluna="1">
+                <p class="simbolo">1,1</p>
+            </div>
+            <div class="casa" data-linha="1" data-coluna="2">
+                <p class="simbolo">1,2</p>
+            </div>
+            <div class="casa" data-linha="1" data-coluna="3">
+                <p class="simbolo">1,3</p>
+            </div>
+
+        </div>
+        <div class="inputs">
+            <div class="inputs-jog1"><input type="text">
+                <button type="submit">Inserir o nome do jogador 1 (X)</button>
+            </div>
+            <div class="inputs-jog2"><input type="text">
+                <button type="submit">Inserir o nome do jogador 2 (O)</button>
+            </div>
+        </div>
+        <script src="script.js"></script>
 </body>
+
 </html>
