@@ -32,3 +32,19 @@
     justify-content: center;
     gap: 20px;
 }
+
+input {
+    border-radius: 4px;
+    padding: 5px;
+}
+
+button {
+    background-color: crimson;
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: darkred;
+}
