@@ -12,10 +12,11 @@ function TabuleiroJogo() {
 
   const obterTabuleiro = () => tabuleiro;
 
+
   const marcarJogada = (fila, coluna, jogada) => {
     if (tabuleiro[fila][coluna] === "X" || tabuleiro[fila][coluna] === "O") {
-      console.log("Jogada inválida");
-      return;
+      window.alert("Jogada inválida!");
+      return "inválido";
     } else {
       tabuleiro[fila].splice(coluna, 1, jogada);
     }
@@ -59,7 +60,6 @@ function Jogo(jogador1, jogador2) {
       mudarJogadorActivo();
       mostrarJogadorActivo();
       tabuleiroJogoInt.marcarJogada(linha, coluna, valor);
-      console.log(array);
       avaliarJogada(array);
       if (contJogadas == 9 && !jog1Vencedor && !jog2Vencedor) {
         window.alert("Empate");
@@ -102,12 +102,12 @@ function Jogo(jogador1, jogador2) {
     const diag2 = (array[2][2] && array[1][1] && array[0][0]);
     const exp = (col1 || col2 || col3 || diag1 || diag2);
     switch (exp) {
-      case ("XXX"):
+      case ("X"):
         estadoJogo = false;
         jog1Vencedor = true;
         window.alert(`${jogadores[0].nome} venceu.`);
         break;
-      case ("OOO"):
+      case ("O"):
         estadoJogo = false;
         jog2Vencedor = true;
         window.alert(`${jogadores[1].nome} venceu.`);
