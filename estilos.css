@@ -16,6 +16,7 @@
 
 .tabuleiro {
     display: grid;
+    width: 400px;
     grid-template-columns: repeat(3, 1fr);
     margin: 20px;
 }
@@ -37,17 +38,6 @@
 input {
     border-radius: 4px;
     padding: 5px;
-}
-
-#botão-jog1, #botão-jog2 {
-    background-color: crimson;
-    color: white;
-    padding: 5px;
-    border-radius: 4px;
-}
-
-#botão-jog1:hover, #botão-jog2:hover {
-    background-color: darkred;
 }
 
 #modos-jogo {

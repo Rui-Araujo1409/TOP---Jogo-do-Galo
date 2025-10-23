@@ -4,35 +4,6 @@
 //jogador2 é O
 
 
-//criar as variáveis dos elementos HTML
-
-const inputJog1 = document.querySelector("#nome-jog1");
-const inputJog2 = document.querySelector("#nome-jog2");
-const botãoJog1 = document.querySelector("#botão-jog1");
-const botãoJog2 = document.querySelector("#botão-jog2");
-const tabuleiroHTML = document.querySelector(".tabuleiro");
-const iniciar = document.querySelector("#iniciar");
-const reiniciar = document.querySelector("#reiniciar");
-
-//obter nomes dos jogadores
-let jog1 = botãoJog1.addEventListener("click", function() {
-jog1 = inputJog1.value;
-});
-let jog2 = botãoJog2.addEventListener("click", function() {
-jog2 = inputJog2.value;
-});
-
-let linhaJogada;
-let colunaJogada;
-
-//obter coordenadas da casa clicada
-tabuleiroHTML.addEventListener("click", (e) => {
-  let elemento = e.target;
-  linhaJogada = parseInt(elemento.dataset.linha);
-  colunaJogada = parseInt(elemento.dataset.coluna);
-})
-
-
 function TabuleiroJogo() {
 
   const tabuleiro = [[0, 0, 0],
@@ -52,7 +23,7 @@ function TabuleiroJogo() {
   return { obterTabuleiro, marcarJogada }
 };
 
-function Jogador(jogador1, jogador2) {
+function Jogo(jogador1, jogador2) {
   const jogadores = [{
     nome: jogador1,
     jogada: "X"
@@ -91,10 +62,10 @@ function Jogador(jogador1, jogador2) {
       console.log(array);
       avaliarJogada(array);
       if (contJogadas == 9 && !jog1Vencedor && !jog2Vencedor) {
-        console.log("Empate");
+        window.alert("Empate");
       }
     } else {
-      return console.log("O jogo terminou!");
+      return window.alert("O jogo terminou!");
     }
   };
   //lógica para determinar o vencedor
@@ -116,11 +87,11 @@ function Jogador(jogador1, jogador2) {
       if (cont1 == 3) {
         estadoJogo = false;
         jog1Vencedor = true;
-        return console.log(`O jogador1 venceu.`);
+        window.alert(`${jogadores[0].nome} venceu.`);
       } else if (cont2 == 3) {
         estadoJogo = false;
         jog2Vencedor = true;
-        return console.log(`O jogador2 venceu.`);
+        window.alert(`${jogadores[1].nome} venceu.`);
       }
     });
     //lógica para colunas e diagonais
@@ -134,12 +105,12 @@ function Jogador(jogador1, jogador2) {
       case ("XXX"):
         estadoJogo = false;
         jog1Vencedor = true;
-        return console.log("O jogador 1 ganhou");
+        window.alert(`${jogadores[0].nome} venceu.`);
         break;
       case ("OOO"):
         estadoJogo = false;
         jog2Vencedor = true;
-        return console.log("O jogador 2 ganhou");
+        window.alert(`${jogadores[1].nome} venceu.`);
         break;
     }
   };
@@ -150,8 +121,50 @@ function Jogador(jogador1, jogador2) {
 };
 
 
-const jogo = Jogador("Rui", "Joaquim");
-const jogadores = jogo.jogadores;
-const tabuleiro = jogo.tabuleiroTeste();
 
-console.log(tabuleiro);
+//criar as variáveis dos elementos HTML
+
+const inputJog1 = document.querySelector("#nome-jog1");
+const inputJog2 = document.querySelector("#nome-jog2");
+const botãoJog1 = document.querySelector("#botão-jog1");
+const botãoJog2 = document.querySelector("#botão-jog2");
+const tabuleiroHTML = document.querySelector(".tabuleiro");
+const iniciar = document.querySelector("#iniciar");
+const reiniciar = document.querySelector("#reiniciar");
+
+
+iniciar.addEventListener("click", () => {
+
+  //obter nomes dos jogadores
+let jog1 = prompt("Insira o nome do Jogador 1:");
+let jog2 = prompt("Insira o nome do Jogador 2:");
+
+const jogo = Jogo(jog1, jog2);
+console.log(jogo);
+
+alert(`${jog1} pode iniciar o jogo.`);
+
+let linhaJogada;
+let colunaJogada;
+
+
+tabuleiroHTML.addEventListener("click", (e) => {
+  //obter coordenadas da casa clicada
+  let elemento = e.target;
+  linhaJogada = parseInt(elemento.dataset.linha);
+  colunaJogada = parseInt(elemento.dataset.coluna);
+  //fazer a jogada
+  jogo.fazerJogada(linhaJogada, colunaJogada);
+  //inserir o símbolo
+  elemento.textContent = jogo.tabuleiroTeste()[linhaJogada][colunaJogada];
+})
+});
+
+
+reiniciar.addEventListener("click", () => location.reload());
+
+
+
+
+
+
