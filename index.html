@@ -14,42 +14,46 @@
             <h1>O Jogo do Galo</h1>
         </div>
         <div class="tabuleiro">
-            <div class="casa" data-linha="3" data-coluna="1">
-                <p class="simbolo">3,1</p>
-            </div>
-            <div class="casa" data-linha="3" data-coluna="2">
-                <p class="simbolo">3,2</p>
-            </div>
-            <div class="casa" data-linha="3" data-coluna="1">
-                <p class="simbolo">3,3</p>
+            <div class="casa" data-linha="2" data-coluna="0">
+                7
             </div>
             <div class="casa" data-linha="2" data-coluna="1">
-                <p class="simbolo">2,1</p>
+                8
             </div>
             <div class="casa" data-linha="2" data-coluna="2">
-                <p class="simbolo">2,2</p>
+                9
             </div>
-            <div class="casa" data-linha="2" data-coluna="3">
-                <p class="simbolo">2,3</p>
+            <div class="casa" data-linha="1" data-coluna="0">
+                4
             </div>
             <div class="casa" data-linha="1" data-coluna="1">
-                <p class="simbolo">1,1</p>
+                5
             </div>
             <div class="casa" data-linha="1" data-coluna="2">
-                <p class="simbolo">1,2</p>
+                6
             </div>
-            <div class="casa" data-linha="1" data-coluna="3">
-                <p class="simbolo">1,3</p>
+            <div class="casa" data-linha="0" data-coluna="0">
+                1
+            </div>
+            <div class="casa" data-linha="0" data-coluna="1">
+                2
+            </div>
+            <div class="casa" data-linha="0" data-coluna="2">
+                3
             </div>
 
         </div>
         <div class="inputs">
-            <div class="inputs-jog1"><input type="text">
-                <button type="submit">Inserir o nome do jogador 1 (X)</button>
+            <div id="inputs-jog1"><input type="text" id="nome-jog1">
+                <button type="submit" id="botão-jog1">Inserir o nome do jogador 1 (X)</button>
             </div>
-            <div class="inputs-jog2"><input type="text">
-                <button type="submit">Inserir o nome do jogador 2 (O)</button>
+            <div id="inputs-jog2"><input type="text" id="nome-jog2">
+                <button type="submit" id="botão-jog2">Inserir o nome do jogador 2 (O)</button>
             </div>
+        </div>
+        <div id="modos-jogo">
+            <button id="iniciar">Iniciar Jogo</button>
+            <button id="reiniciar">Reiniciar Jogo</button>
         </div>
         <script src="script.js"></script>
 </body>

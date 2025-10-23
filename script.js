@@ -3,6 +3,36 @@
 //jogador1 é X
 //jogador2 é O
 
+
+//criar as variáveis dos elementos HTML
+
+const inputJog1 = document.querySelector("#nome-jog1");
+const inputJog2 = document.querySelector("#nome-jog2");
+const botãoJog1 = document.querySelector("#botão-jog1");
+const botãoJog2 = document.querySelector("#botão-jog2");
+const tabuleiroHTML = document.querySelector(".tabuleiro");
+const iniciar = document.querySelector("#iniciar");
+const reiniciar = document.querySelector("#reiniciar");
+
+//obter nomes dos jogadores
+let jog1 = botãoJog1.addEventListener("click", function() {
+jog1 = inputJog1.value;
+});
+let jog2 = botãoJog2.addEventListener("click", function() {
+jog2 = inputJog2.value;
+});
+
+let linhaJogada;
+let colunaJogada;
+
+//obter coordenadas da casa clicada
+tabuleiroHTML.addEventListener("click", (e) => {
+  let elemento = e.target;
+  linhaJogada = parseInt(elemento.dataset.linha);
+  colunaJogada = parseInt(elemento.dataset.coluna);
+})
+
+
 function TabuleiroJogo() {
 
   const tabuleiro = [[0, 0, 0],

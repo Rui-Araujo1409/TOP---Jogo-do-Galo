@@ -4,24 +4,26 @@
     box-sizing: border-box;
 }
 
+.contentor {
+    display: grid;
+    justify-content: center;
+}
+
 .titulo {
     text-align: center;
     margin-top: 30px;
 }
 
 .tabuleiro {
+    width: 600px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    padding: 9cqb;
+    margin: 20px;
 }
 
 .casa {
     border: 1px solid black;
     height: 200px;
-}
-
-.simbolo {
-    border: 1px solid red;
     text-align: center;
     padding: 81px 0;
     font-size: 30px;
@@ -38,13 +40,27 @@ input {
     padding: 5px;
 }
 
-button {
+#botão-jog1, #botão-jog2 {
     background-color: crimson;
     color: white;
     padding: 5px;
     border-radius: 4px;
 }
 
-button:hover {
+#botão-jog1:hover, #botão-jog2:hover {
     background-color: darkred;
+}
+
+#modos-jogo {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    gap: 20px;
+}
+
+#iniciar, #reiniciar {
+    padding: 5px;
+    border-radius: 4px;
+    background-color: blue;
+    color: white;
 }
