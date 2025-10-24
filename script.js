@@ -14,12 +14,12 @@ function TabuleiroJogo() {
 
 
   const marcarJogada = (fila, coluna, jogada) => {
-    if (tabuleiro[fila][coluna] === "X" || tabuleiro[fila][coluna] === "O") {
+  /*   if (tabuleiro[fila][coluna] === "X" || tabuleiro[fila][coluna] === "O") {
       window.alert("Jogada inválida!");
-      return "inválido";
-    } else {
+      return;
+    } else { */
       tabuleiro[fila].splice(coluna, 1, jogada);
-    }
+    //}
   }
   return { obterTabuleiro, marcarJogada }
 };
@@ -52,8 +52,8 @@ function Jogo(jogador1, jogador2) {
   let contJogadas = 0;
   let jog1Vencedor = false;
   let jog2Vencedor = false;
-  const fazerJogada = (linha, coluna) => {
 
+  const fazerJogada = (linha, coluna) => {
     const array = tabuleiroTeste();
     valor = mostrarJogadorActivo().jogada;
     if (estadoJogo) {
@@ -63,9 +63,11 @@ function Jogo(jogador1, jogador2) {
       avaliarJogada(array);
       if (contJogadas == 9 && !jog1Vencedor && !jog2Vencedor) {
         window.alert("Empate");
+        return;
       }
     } else {
-      return window.alert("O jogo terminou!");
+      window.alert("O jogo terminou!");
+      return; 
     }
   };
   //lógica para determinar o vencedor
@@ -102,12 +104,12 @@ function Jogo(jogador1, jogador2) {
     const diag2 = (array[2][2] && array[1][1] && array[0][0]);
     const exp = (col1 || col2 || col3 || diag1 || diag2);
     switch (exp) {
-      case ("X"):
+      case ("XXX"):
         estadoJogo = false;
         jog1Vencedor = true;
         window.alert(`${jogadores[0].nome} venceu.`);
         break;
-      case ("O"):
+      case ("OOO"):
         estadoJogo = false;
         jog2Vencedor = true;
         window.alert(`${jogadores[1].nome} venceu.`);
@@ -140,7 +142,7 @@ let jog1 = prompt("Insira o nome do Jogador 1:");
 let jog2 = prompt("Insira o nome do Jogador 2:");
 
 const jogo = Jogo(jog1, jog2);
-console.log(jogo);
+
 
 alert(`${jog1} pode iniciar o jogo.`);
 
@@ -153,10 +155,15 @@ tabuleiroHTML.addEventListener("click", (e) => {
   let elemento = e.target;
   linhaJogada = parseInt(elemento.dataset.linha);
   colunaJogada = parseInt(elemento.dataset.coluna);
-  //fazer a jogada
-  jogo.fazerJogada(linhaJogada, colunaJogada);
+  //fazer a jogada apenas se a casa estiver vazia
+  if(elemento.textContent == "") {
+    jogo.fazerJogada(linhaJogada, colunaJogada);
   //inserir o símbolo
   elemento.textContent = jogo.tabuleiroTeste()[linhaJogada][colunaJogada];
+  } else {
+    window.alert("Jogada inválida!");
+    return;
+  }
 })
 });
 
