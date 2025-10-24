@@ -12,18 +12,15 @@ function TabuleiroJogo() {
 
   const obterTabuleiro = () => tabuleiro;
 
-
+//fx que vai marcar a casa com o símbolo do jogador
   const marcarJogada = (fila, coluna, jogada) => {
-  /*   if (tabuleiro[fila][coluna] === "X" || tabuleiro[fila][coluna] === "O") {
-      window.alert("Jogada inválida!");
-      return;
-    } else { */
-      tabuleiro[fila].splice(coluna, 1, jogada);
-    //}
+    tabuleiro[fila].splice(coluna, 1, jogada);
   }
   return { obterTabuleiro, marcarJogada }
 };
 
+//fx que vai guardar os nomes dos jogadores, fazer a jogada
+//e avaliar a jogada
 function Jogo(jogador1, jogador2) {
   const jogadores = [{
     nome: jogador1,
@@ -53,9 +50,11 @@ function Jogo(jogador1, jogador2) {
   let jog1Vencedor = false;
   let jog2Vencedor = false;
 
+  //fx que vai fazer todos os passos da Jogada
   const fazerJogada = (linha, coluna) => {
     const array = tabuleiroTeste();
     valor = mostrarJogadorActivo().jogada;
+    //se o estado do jogo for true, correr os vários passos
     if (estadoJogo) {
       mudarJogadorActivo();
       mostrarJogadorActivo();
@@ -67,10 +66,11 @@ function Jogo(jogador1, jogador2) {
       }
     } else {
       window.alert("O jogo terminou!");
-      return; 
+      return;
     }
   };
-  //lógica para determinar o vencedor
+  //lógica para avaliar a jogada e determinar se existe 
+  //vencedor
   const avaliarJogada = (array) => {
     contJogadas++;
 
@@ -117,15 +117,14 @@ function Jogo(jogador1, jogador2) {
     }
   };
 
+  //estado jogo: falso => jogo acabou
   const mostrarEstadoJogo = () => estadoJogo;
 
   return { jogadores, mostrarJogadorActivo, mudarJogadorActivo, fazerJogada, tabuleiroTeste, mostrarEstadoJogo };
 };
 
-
-
+//HTML
 //criar as variáveis dos elementos HTML
-
 const inputJog1 = document.querySelector("#nome-jog1");
 const inputJog2 = document.querySelector("#nome-jog2");
 const botãoJog1 = document.querySelector("#botão-jog1");
@@ -134,40 +133,38 @@ const tabuleiroHTML = document.querySelector(".tabuleiro");
 const iniciar = document.querySelector("#iniciar");
 const reiniciar = document.querySelector("#reiniciar");
 
-
+//Iniciar o jogo
+//obter nomes dos jogadores e colocar em vars
 iniciar.addEventListener("click", () => {
+  let jog1 = prompt("Insira o nome do Jogador 1:");
+  let jog2 = prompt("Insira o nome do Jogador 2:");
 
-  //obter nomes dos jogadores
-let jog1 = prompt("Insira o nome do Jogador 1:");
-let jog2 = prompt("Insira o nome do Jogador 2:");
+  const jogo = Jogo(jog1, jog2);
 
-const jogo = Jogo(jog1, jog2);
+  alert(`${jog1} pode iniciar o jogo.`);
 
+  let linhaJogada;
+  let colunaJogada;
 
-alert(`${jog1} pode iniciar o jogo.`);
-
-let linhaJogada;
-let colunaJogada;
-
-
-tabuleiroHTML.addEventListener("click", (e) => {
-  //obter coordenadas da casa clicada
-  let elemento = e.target;
-  linhaJogada = parseInt(elemento.dataset.linha);
-  colunaJogada = parseInt(elemento.dataset.coluna);
-  //fazer a jogada apenas se a casa estiver vazia
-  if(elemento.textContent == "") {
-    jogo.fazerJogada(linhaJogada, colunaJogada);
-  //inserir o símbolo
-  elemento.textContent = jogo.tabuleiroTeste()[linhaJogada][colunaJogada];
-  } else {
-    window.alert("Jogada inválida!");
-    return;
-  }
-})
+  //fazer a jogada quando se clica em iniciar
+  tabuleiroHTML.addEventListener("click", (e) => {
+    //obter coordenadas da casa clicada
+    let elemento = e.target;
+    linhaJogada = parseInt(elemento.dataset.linha);
+    colunaJogada = parseInt(elemento.dataset.coluna);
+    //fazer a jogada apenas se a casa estiver vazia
+    if (elemento.textContent == "") {
+      jogo.fazerJogada(linhaJogada, colunaJogada);
+      //inserir o símbolo
+      elemento.textContent = jogo.tabuleiroTeste()[linhaJogada][colunaJogada];
+    } else {
+      window.alert("Jogada inválida!");
+      return;
+    }
+  })
 });
 
-
+//fx para o botão reiniciar
 reiniciar.addEventListener("click", () => location.reload());
 
 
